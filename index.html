@@ -354,7 +354,49 @@ function getHistorial() {
     return JSON.parse(localStorage.getItem(getClaveStorage()) || '{}');
 }
 
-function cambiarPeriodoGlobal() {
+async function cargarConfiguracionJsonPorRed() {
+    const anio = document.getElementById('anioSel').value;
+    const rutaJson = `./config_presupuesto_${anio}.json`;
+
+    try {
+        const res = await fetch(rutaJson);
+        if (!res.ok) return;
+
+        const datosRemotos = await res.json();
+        if (typeof datosRemotos !== 'object') return;
+
+        let histLocal = getHistorial();
+
+        // Combinar datos del JSON cargado preservando comentarios/notas creadas localmente si ya existen
+        Object.keys(datosRemotos).forEach(key => {
+            if (key === 'pptoAnualFijo') {
+                if (!histLocal.pptoAnualFijo) {
+                    histLocal.pptoAnualFijo = datosRemotos.pptoAnualFijo;
+                }
+            } else {
+                const mesRemoto = datosRemotos[key];
+                const mesLocal = histLocal[key] || {};
+
+                histLocal[key] = {
+                    tP: mesRemoto.tP ?? 0,
+                    tR: mesRemoto.tR ?? 0,
+                    tc: mesRemoto.tc ?? 0,
+                    rubros: mesRemoto.rubros || [],
+                    comentario: mesLocal.comentario || mesRemoto.comentario || "",
+                    notasRubros: { ...(mesRemoto.notasRubros || {}), ...(mesLocal.notasRubros || {}) }
+                };
+            }
+        });
+
+        localStorage.setItem(getClaveStorage(), JSON.stringify(histLocal));
+    } catch (e) {
+        // Si falla la petición (p. ej. abriendo el HTML de forma local mediante file:// o si no existe aún el .json), continúa con localStorage
+        console.warn("No se pudo cargar la configuración automática vía fetch:", e);
+    }
+}
+
+async function cambiarPeriodoGlobal() {
+    await cargarConfiguracionJsonPorRed();
     render();
 }
 
@@ -372,9 +414,6 @@ function procesar(e) {
         const pD = XLSX.utils.sheet_to_json(wb.Sheets["PREMISAS"], {header: 1});
         const rD = XLSX.utils.sheet_to_json(wb.Sheets["REAL VS PRESUP"], {header: 1});
         
-        // Estructura: Columna B = REAL, Columna C = PRESUPUESTO
-        // mesIdx = 1 (Enero)  -> colR = 1 (Col B), colP = 2 (Col C)
-        // mesIdx = 2 (Febrero)-> colR = 3 (Col D), colP = 4 (Col E)
         let colR = (mesIdx * 2) - 1; 
         let colP = (mesIdx * 2);     
         
@@ -382,7 +421,6 @@ function procesar(e) {
         
         rD.forEach((fila, i) => {
             const rubro = (fila[0] || "").toString().trim();
-            // Filtrar filas de encabezados y totales para leer únicamente los rubros
             if (i >= 8 && rubro && !rubro.toUpperCase().includes("TOTAL") && !rubro.toUpperCase().includes("ACUMULADO") && !rubro.toUpperCase().includes("ETIQUETAS")) {
                 const r = parseFloat(fila[colR]) || 0;
                 const p = parseFloat(fila[colP]) || 0;
@@ -395,7 +433,6 @@ function procesar(e) {
             }
         });
         
-        // Mapeo del Tipo de Cambio desde la hoja PREMISAS
         let tcVal = 0;
         if (pD[3] && pD[3][mesIdx + 1] !== undefined) {
             tcVal = parseFloat(pD[3][mesIdx + 1]) || 0;
@@ -724,8 +761,9 @@ function importarDatosJson(e) {
     reader.readAsText(file);
 }
 
-window.onload = () => {
+window.onload = async () => {
     if(typeof lucide !== 'undefined') lucide.createIcons();
+    await cargarConfiguracionJsonPorRed();
     render();
 };
 </script>
