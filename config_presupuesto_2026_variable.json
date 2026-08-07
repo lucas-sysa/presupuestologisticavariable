@@ -1,0 +1,316 @@
+{
+  "1": {
+    "tP": 68749441.52603737,
+    "tR": 63289740.02,
+    "tc": 1182.81,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 245937.2014,
+        "r": 1838600
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 19480569.161837354,
+        "r": 24609727.89
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 45280341.1872,
+        "r": 33340090
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 923033.7,
+        "r": 784000
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 171684.2682,
+        "r": 66000
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2647876.0074,
+        "r": 1022200
+      },
+      {
+        "rubro": "Gastos de Ferretería",
+        "p": 0,
+        "r": 1529122.13
+      },
+      {
+        "rubro": "Gastos de Limpieza",
+        "p": 0,
+        "r": 100000
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  },
+  "2": {
+    "tP": 70302697.65843514,
+    "tR": 66115396.38999999,
+    "tc": 1172.94,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 251493.66059123023,
+        "r": 399800
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 19920693.660910748,
+        "r": 19538177.27
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 46303359.935642414,
+        "r": 42593568
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 943887.8003841002,
+        "r": 200000
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 175563.1308714426,
+        "r": 0
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2707699.470035189,
+        "r": 3360000
+      },
+      {
+        "rubro": "Gastos de Ferretería",
+        "p": 0,
+        "r": 23851.12
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  },
+  "3": {
+    "tP": 72554734.30714452,
+    "tR": 59787057.6,
+    "tc": 1162.77,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 259549.865536896,
+        "r": 1667050
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 20558821.836447425,
+        "r": 17998175
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 47786615.44370381,
+        "r": 38424063
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 974123.765568,
+        "r": 0
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 181187.020395648,
+        "r": 57000
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2794436.3754927358,
+        "r": 1560769.6
+      },
+      {
+        "rubro": "Gastos de Limpieza",
+        "p": 0,
+        "r": 80000
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  },
+  "4": {
+    "tP": 74107405.6213174,
+    "tR": 66811963.400000006,
+    "tc": 1152.9,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 265104.2326593856,
+        "r": 3966800
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 20998780.6237474,
+        "r": 17992175
+      },
+      {
+        "rubro": "Beneficios Personal",
+        "p": 0,
+        "r": 88966.81000000001
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 48809249.01419908,
+        "r": 41514150
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 994970.0141511554,
+        "r": 1691000
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 185064.42263211487,
+        "r": 235000.02
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2854237.313928281,
+        "r": 0
+      },
+      {
+        "rubro": "Gastos de Limpieza",
+        "p": 0,
+        "r": 140000
+      },
+      {
+        "rubro": "Gastos de Movilidad",
+        "p": 0,
+        "r": 883871.5700000001
+      },
+      {
+        "rubro": "Mantenimiento y reparación Máquinas y Equipos",
+        "p": 0,
+        "r": 300000
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  },
+  "5": {
+    "tP": 75522857.06868458,
+    "tR": 89012618.42999999,
+    "tc": 1164.86,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 270167.72350317985,
+        "r": 11195077.9
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 21399857.333660975,
+        "r": 18093625
+      },
+      {
+        "rubro": "Beneficios Personal",
+        "p": 0,
+        "r": 40552.07
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 49741505.67037027,
+        "r": 50339065
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 1013973.9414214423,
+        "r": 2761000
+      },
+      {
+        "rubro": "Gastos Correspondencia",
+        "p": 0,
+        "r": 20600
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 188599.15310438827,
+        "r": 140313.34
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2908753.2466243105,
+        "r": 5509986.3
+      },
+      {
+        "rubro": "Gastos de Movilidad",
+        "p": 0,
+        "r": 912398.8200000001
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  },
+  "6": {
+    "tP": 76836954.78167969,
+    "tR": 88568051.15,
+    "tc": 1176.74,
+    "rubros": [
+      {
+        "rubro": "Alquiler Máquinas y Equipos",
+        "p": 274868.6418921352,
+        "r": 3109998.2500000005
+      },
+      {
+        "rubro": "Alquileres pagados",
+        "p": 21772214.85126668,
+        "r": 15526525
+      },
+      {
+        "rubro": "Descarga de Contenedores",
+        "p": 50607007.86903472,
+        "r": 54099114
+      },
+      {
+        "rubro": "Fletes Varios",
+        "p": 1031617.0880021754,
+        "r": 2000000
+      },
+      {
+        "rubro": "Gastos de Comidas y Refrigerios",
+        "p": 191880.77836840463,
+        "r": 723900
+      },
+      {
+        "rubro": "Gastos de Embalaje",
+        "p": 2959365.553115574,
+        "r": 5565927.2
+      },
+      {
+        "rubro": "Gastos de Ferretería",
+        "p": 0,
+        "r": 1807286.79
+      },
+      {
+        "rubro": "Gastos de Limpieza",
+        "p": 0,
+        "r": 740000
+      },
+      {
+        "rubro": "Gastos de Movilidad",
+        "p": 0,
+        "r": 959674.91
+      },
+      {
+        "rubro": "Mantenimiento y reparación Máquinas y Equipos",
+        "p": 0,
+        "r": 3947625
+      },
+      {
+        "rubro": "Mantenimiento y reparación - Equipos de computación",
+        "p": 0,
+        "r": 88000
+      }
+    ],
+    "comentario": "",
+    "notasRubros": {}
+  }
+}
