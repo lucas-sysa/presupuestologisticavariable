@@ -345,10 +345,16 @@ let miChart = null;
 const mesesNombresFull = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const mesesPrefijos = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 
-// OPCIÓN A: Clave dinámica según el repositorio o ruta de la URL
+// Obtiene el identificador de la carpeta o repositorio actual (por ejemplo: "logistica", "compras", etc.)
+function getRepoPath() {
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    return segments.length > 0 ? segments[segments.length - 2] || segments[0] : 'app';
+}
+
+// Genera una clave única en LocalStorage incorporando la carpeta o repositorio
 function getClaveStorage() {
     const anio = document.getElementById('anioSel').value;
-    const repoPath = window.location.pathname.split('/')[1] || 'app';
+    const repoPath = getRepoPath();
     return `bi_v_${repoPath}_${anio}_data`;
 }
 
@@ -356,9 +362,11 @@ function getHistorial() {
     return JSON.parse(localStorage.getItem(getClaveStorage()) || '{}');
 }
 
+// Carga automáticamente el archivo JSON correspondiente a este repositorio y año
 async function cargarConfiguracionJsonPorRed() {
     const anio = document.getElementById('anioSel').value;
-    const rutaJson = `./config_presupuesto_${anio}.json`;
+    const repoPath = getRepoPath();
+    const rutaJson = `./config_presupuesto_${repoPath}_${anio}.json?v=${new Date().getTime()}`;
 
     try {
         const res = await fetch(rutaJson, { cache: "no-store" });
@@ -369,7 +377,6 @@ async function cargarConfiguracionJsonPorRed() {
 
         let histLocal = getHistorial();
 
-        // Combinar datos del JSON cargado preservando comentarios/notas creadas localmente si ya existen
         Object.keys(datosRemotos).forEach(key => {
             if (key === 'pptoAnualFijo') {
                 if (!histLocal.pptoAnualFijo) {
@@ -721,6 +728,7 @@ function limpiarTodoElAnio() {
 
 function exportarDatosJson() {
     const clanioVal = document.getElementById('anioSel').value;
+    const repoPath = getRepoPath();
     const hist = getHistorial();
     
     if (Object.keys(hist).length === 0) {
@@ -731,7 +739,7 @@ function exportarDatosJson() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(hist, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `config_presupuesto_${clanioVal}.json`);
+    downloadAnchor.setAttribute("download", `config_presupuesto_${repoPath}_${clanioVal}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
