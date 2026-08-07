@@ -345,9 +345,11 @@ let miChart = null;
 const mesesNombresFull = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const mesesPrefijos = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 
+// OPCIÓN A: Clave dinámica según el repositorio o ruta de la URL
 function getClaveStorage() {
     const anio = document.getElementById('anioSel').value;
-    return `bi_v_${anio}_data`;
+    const repoPath = window.location.pathname.split('/')[1] || 'app';
+    return `bi_v_${repoPath}_${anio}_data`;
 }
 
 function getHistorial() {
@@ -359,7 +361,7 @@ async function cargarConfiguracionJsonPorRed() {
     const rutaJson = `./config_presupuesto_${anio}.json`;
 
     try {
-        const res = await fetch(rutaJson);
+        const res = await fetch(rutaJson, { cache: "no-store" });
         if (!res.ok) return;
 
         const datosRemotos = await res.json();
@@ -390,7 +392,6 @@ async function cargarConfiguracionJsonPorRed() {
 
         localStorage.setItem(getClaveStorage(), JSON.stringify(histLocal));
     } catch (e) {
-        // Si falla la petición (p. ej. abriendo el HTML de forma local mediante file:// o si no existe aún el .json), continúa con localStorage
         console.warn("No se pudo cargar la configuración automática vía fetch:", e);
     }
 }
@@ -712,7 +713,7 @@ function limpiarMes() {
 function limpiarTodoElAnio() {
     const anioVal = document.getElementById('anioSel').value;
     if (confirm(`⚠️ ALERTA: ¿Estás seguro de que querés borrar COMPLETAMENTE todos los meses cargados en el año ${anioVal}?`)) {
-        localStorage.removeItem(`bi_v_${anioVal}_data`);
+        localStorage.removeItem(getClaveStorage());
         render();
         alert(`El historial completo del año ${anioVal} fue reseteado.`);
     }
